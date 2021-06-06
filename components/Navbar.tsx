@@ -16,7 +16,7 @@ const Navbar = () => {
       className="navbar navbar-expand-lg navbar-light bg-light px-5 mb-5"
       style={{ zIndex: 100 }}
     >
-      <div className="navbar-nav mr-auto d-flex flex-row " align="center">
+      <div className="navbar-nav mr-auto d-flex flex-row ">
         <div className="nav-item active">
           <span className="nav-link mx-1">
             <Link href="/">Home</Link>

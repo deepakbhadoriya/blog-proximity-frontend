@@ -5,11 +5,11 @@ import PrivatePage from "../../../authentication/PrivatePage";
 import { CategoryTagContainer } from "../../../components/CategoryTags";
 import InfiniteScrollPosts from "../../../components/InfiniteScrollPosts";
 import baseUrl from "../../../config/baseUrl";
-import { PostsTS } from "../../../utils/tsInterfaces";
+import { PostsTS, CategoryTS } from "../../../utils/tsInterfaces";
 
 const postLimit = 10;
 
-const index = ({ categories }) => {
+const index = ({ categories }: { categories: CategoryTS[] }) => {
   const postInitial = {
     title: "",
     description: "",
@@ -27,14 +27,15 @@ const index = ({ categories }) => {
   });
 
   const fetchMorePost = async () => {
+    // @ts-ignore
+    const page = parseInt(localPosts.currentPage);
     try {
       const res: { data: PostsTS } = await axios.get(
-        `${baseUrl}/post/user?&limit=${postLimit}&page=${
-          parseInt(localPosts.currentPage) + 1
-        }`
+        `${baseUrl}/post/user?&limit=${postLimit}&page=${page + 1}`
       );
       const postsData = res.data;
       const posts = res.data.posts;
+      // @ts-ignore
       setLocalPosts({ ...postsData, posts: [...localPosts.posts, ...posts] });
     } catch (error) {
       console.log(error);
@@ -84,6 +85,7 @@ const index = ({ categories }) => {
     const tempPost = post;
     const categoryIndex = isCategoryPresent(newCategory);
     if (categoryIndex === -1) {
+      // @ts-ignore
       tempPost.category.push(newCategory);
     } else {
       tempPost.category.splice(categoryIndex, 1);
@@ -118,8 +120,8 @@ const index = ({ categories }) => {
     <PrivatePage>
       <div className="container">
         <div className="row">
-          <div className="col-12" align="center">
-            <h2>Manage your Post</h2>
+          <div className="col-12">
+            <h2 className="text-center mb-4">Manage your Post</h2>
           </div>
           <div className="col-md-6 col-sm-12 mb-5">
             <form onSubmit={handleFormSubmit}>
@@ -196,7 +198,6 @@ const index = ({ categories }) => {
                   value={post.description}
                 />
               </div>
-
               <button type="submit" className="btn btn-primary">
                 {editPostId ? "Update Post" : "Add Post"}
               </button>
@@ -214,6 +215,7 @@ const index = ({ categories }) => {
             {localPosts && (
               <InfiniteScrollPosts
                 next={fetchMorePost}
+                // @ts-ignore
                 postData={localPosts}
                 className="col-12 mb-2"
                 onEdit={handleEdit}

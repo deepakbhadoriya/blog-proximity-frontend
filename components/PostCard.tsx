@@ -44,7 +44,7 @@ const PostCard = ({
           </Link>
           <AuthorInfo user={user} createdAt={createdAt} />
         </div>
-        <div className="col-12" align="right">
+        <div className="col-12 d-flex justify-content-end">
           {onEdit && (
             <button className="btn btn-primary m-2" onClick={() => onEdit(_id)}>
               Edit

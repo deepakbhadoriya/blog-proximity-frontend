@@ -13,3 +13,17 @@ export interface PostsTS {
   currentPage: string;
   totalPosts: string;
 }
+
+export interface UserTS {
+  date: string;
+  email: string;
+  name: string;
+  _id: string;
+}
+
+export interface CategoryTS {
+  name: string;
+  _id: string;
+  createdAt: string;
+  user: UserTS;
+}

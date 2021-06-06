@@ -4,19 +4,20 @@ import axios from "axios";
 import PrivatePage from "../../../authentication/PrivatePage";
 import { CategoryTagContainer } from "../../../components/CategoryTags";
 import baseUrl from "../../../config/baseUrl";
+import { CategoryTS } from "../../../utils/tsInterfaces";
 
-const index = ({ categories }) => {
+const index = ({ categories }: { categories: CategoryTS[] }) => {
   const [name, setName] = useState("");
-  const [editCatId, setEditCatId] = useState(false);
+  const [editCatId, setEditCatId] = useState(false as Boolean | string);
   const [localCategories, setLocalCategories] = useState(categories);
 
-  const handleEdit = (catId, catName) => {
+  const handleEdit = (catId: string, catName: string) => {
     setName(catName);
     setEditCatId(catId);
   };
 
   const getCategories = async () => {
-    const res: { data: Object } = await axios.get(`${baseUrl}/category`);
+    const res: { data: CategoryTS[] } = await axios.get(`${baseUrl}/category`);
     setLocalCategories(res.data);
   };
 
@@ -51,8 +52,8 @@ const index = ({ categories }) => {
     <PrivatePage>
       <div className="container">
         <div className="row">
-          <div className="col-12" align="center">
-            <h2>Manage your Post</h2>
+          <div className="col-12">
+            <h2 className="text-center mb-4">Manage your Post</h2>
           </div>
           <div className="col-md-6 col-sm-12 mb-5">
             <form onSubmit={handleFormSubmit}>
@@ -98,7 +99,7 @@ const index = ({ categories }) => {
                     ✎
                   </span>
                   <span
-                    onClick={() => handleDelete(_id, name)}
+                    onClick={() => handleDelete(_id)}
                     style={{
                       cursor: "pointer",
                       fontSize: 20,
@@ -120,7 +121,7 @@ const index = ({ categories }) => {
 
 export const getServerSideProps = async () => {
   try {
-    const res: { data: Object } = await axios.get(`${baseUrl}/category`);
+    const res: { data: CategoryTS[] } = await axios.get(`${baseUrl}/category`);
     return { props: { categories: res.data } };
   } catch (error) {
     return { notFound: true };

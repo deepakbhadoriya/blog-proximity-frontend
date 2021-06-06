@@ -1,7 +1,7 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import PostCard from "./PostCard";
-import { PostsTS } from "../utils/tsInterfaces";
+import { PostTS } from "../utils/tsInterfaces";
 
 const InfiniteScrollPosts = ({
   postData: { posts, totalPosts },
@@ -10,11 +10,11 @@ const InfiniteScrollPosts = ({
   onEdit,
   onDelete,
 }: {
-  postData: PostsTS;
-  next(): any;
-  className: string;
-  onEdit: any;
-  onDelete: any;
+  postData: { posts: PostTS[]; totalPosts: string };
+  next: any;
+  className?: string;
+  onEdit?: any;
+  onDelete?: any;
 }) => {
   return (
     <InfiniteScroll
@@ -42,7 +42,7 @@ const InfiniteScrollPosts = ({
         {Array.isArray(posts) &&
           posts.map((post) => (
             <PostCard
-              className={className}
+              className={className || ""}
               post={post}
               key={post._id}
               onEdit={onEdit}
