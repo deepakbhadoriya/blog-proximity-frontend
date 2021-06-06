@@ -8,10 +8,16 @@ import { PostTS } from "../utils/tsInterfaces";
 
 const PostCard = ({
   post: { _id, title, user, createdAt, category, thumbnailUrl },
+  className,
+  onEdit,
+  onDelete,
 }: {
   post: PostTS;
+  className: string;
+  onEdit: any;
+  onDelete: any;
 }) => (
-  <div className="col-6 mb-2 p-4">
+  <div className={className ? className : "col-md-6 col-sm-12 mb-2 p-4"}>
     <PostCardContainer>
       <div className="row">
         <div className="col-5">
@@ -37,6 +43,21 @@ const PostCard = ({
             <h2>{title}</h2>
           </Link>
           <AuthorInfo user={user} createdAt={createdAt} />
+        </div>
+        <div className="col-12" align="right">
+          {onEdit && (
+            <button className="btn btn-primary m-2" onClick={() => onEdit(_id)}>
+              Edit
+            </button>
+          )}
+          {onDelete && (
+            <button
+              className="btn btn-danger m-2"
+              onClick={() => onDelete(_id)}
+            >
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </PostCardContainer>

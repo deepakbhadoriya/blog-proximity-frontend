@@ -6,9 +6,15 @@ import { PostsTS } from "../utils/tsInterfaces";
 const InfiniteScrollPosts = ({
   postData: { posts, totalPosts },
   next,
+  className,
+  onEdit,
+  onDelete,
 }: {
   postData: PostsTS;
   next(): any;
+  className: string;
+  onEdit: any;
+  onDelete: any;
 }) => {
   return (
     <InfiniteScroll
@@ -34,7 +40,15 @@ const InfiniteScrollPosts = ({
     >
       <div className="row">
         {Array.isArray(posts) &&
-          posts.map((post) => <PostCard post={post} key={post._id} />)}
+          posts.map((post) => (
+            <PostCard
+              className={className}
+              post={post}
+              key={post._id}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
+          ))}
       </div>
     </InfiniteScroll>
   );

@@ -1,5 +1,3 @@
-@import url(./bootstrap-grid.css);
-
 html,
 body {
   padding: 0;
@@ -11,7 +9,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: pointer !important;
+  cursor: pointer;
 }
 
 * {

@@ -13,8 +13,8 @@ const SinglePost = ({
   className: string;
 }) => (
   <div className={className}>
-    <div className="row px-5 mx-5 ">
-      <div className="col-12 mt-5">
+    <div className="row px-md-5 mx-md-5 mx-sm-2 px-sm-0 ">
+      <div className="col-12 mt-md-5 mt-sm-2">
         <ThumbnailImage src={thumbnailUrl}>
           <BlogTitle>
             <div>{title}</div>

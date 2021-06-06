@@ -18,7 +18,7 @@ const CategoryTags = ({ category }) =>
 
 export default CategoryTags;
 
-const CategoryTagContainer = styled.span`
+export const CategoryTagContainer = styled.span`
   font-size: 14px;
   font-weight: 600;
   color: #a5a5a5;
