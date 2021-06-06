@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import PrivatePage from "../../../authentication/PrivatePage";
@@ -6,10 +6,10 @@ import { CategoryTagContainer } from "../../../components/CategoryTags";
 import baseUrl from "../../../config/baseUrl";
 import { CategoryTS } from "../../../utils/tsInterfaces";
 
-const index = ({ categories }: { categories: CategoryTS[] }) => {
+const index = () => {
   const [name, setName] = useState("");
   const [editCatId, setEditCatId] = useState(false as Boolean | string);
-  const [localCategories, setLocalCategories] = useState(categories);
+  const [localCategories, setLocalCategories] = useState([] as CategoryTS[]);
 
   const handleEdit = (catId: string, catName: string) => {
     setName(catName);
@@ -17,9 +17,15 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
   };
 
   const getCategories = async () => {
-    const res: { data: CategoryTS[] } = await axios.get(`${baseUrl}/category`);
+    const res: { data: CategoryTS[] } = await axios.get(
+      `${baseUrl}/category/user`
+    );
     setLocalCategories(res.data);
   };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   const handleDelete = async (catId: string) => {
     await axios.delete(`${baseUrl}/category/${catId}`);
@@ -119,12 +125,4 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  try {
-    const res: { data: CategoryTS[] } = await axios.get(`${baseUrl}/category`);
-    return { props: { categories: res.data } };
-  } catch (error) {
-    return { notFound: true };
-  }
-};
 export default index;

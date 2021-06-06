@@ -11,6 +11,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     <Head>
       {/* Responsive meta tag */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="apple-touch-icon" href="/icon.svg"></link>
+      <meta name="theme-color" content="#fff" />
       {/* bootstrap CDN */}
       <link
         rel="stylesheet"
