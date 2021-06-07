@@ -19,10 +19,12 @@ const AuthorInfo = ({
       }}
     >
       <div className="d-flex">
-        <div>
-          <Avatar
+        <div className="pr-3">
+          <Image
+            className="avatarImage"
             alt="userPic"
             src="/assets/images/profilePic.png"
+            // layout="responsive"
             height={50}
             width={50}
           />
@@ -37,11 +39,6 @@ const AuthorInfo = ({
 };
 
 export default AuthorInfo;
-
-const Avatar = styled(Image)`
-  border-radius: 25px;
-  margin-right: 10px;
-`;
 
 const AuthorName = styled.div`
   font-weight: 800;

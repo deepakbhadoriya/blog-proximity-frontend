@@ -1,7 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import InfiniteScroll from "react-infinite-scroll-component";
-import PostCard from "./PostCard";
 import { PostTS } from "../utils/tsInterfaces";
+
+const PostCard = dynamic(() => import("./PostCard"));
 
 const InfiniteScrollPosts = ({
   postData: { posts, totalPosts },
