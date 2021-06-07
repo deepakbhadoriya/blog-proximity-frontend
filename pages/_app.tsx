@@ -9,36 +9,21 @@ import "../styles/globals.css";
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
+      <title>Blog build using NEXT, TS, NODE,</title>
+      <meta
+        property="og:title"
+        content="Blog build using NEXT, TS, NODE,"
+        key="blog"
+      />
+      <meta
+        name="description"
+        content="This is MERN stack blog app fontent is build using NEXTJS, TS and it is also a PWA and Backend is build in NODE, TYPESCRIPT, MONGODB"
+      />
       {/* Responsive meta tag */}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="apple-touch-icon" href="/icon.svg"></link>
       <meta name="theme-color" content="#fff" />
-      {/* bootstrap CDN */}
-      <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossOrigin="anonymous"
-      />
-      <script
-        key="1"
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossOrigin="anonymous"
-      ></script>
-      <script
-        key="2"
-        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossOrigin="anonymous"
-      ></script>
-      <script
-        key="3"
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossOrigin="anonymous"
-      ></script>
     </Head>
     <AuthContextProvider>
       <Fragment>
