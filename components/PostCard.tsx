@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import styled from "styled-components";
 
-import AuthorInfo from "./AuthorInfo";
-import CategoryTags from "./CategoryTags";
 import { PostTS } from "../utils/tsInterfaces";
+
+const AuthorInfo = dynamic(() => import("./AuthorInfo"));
+const CategoryTags = dynamic(() => import("./CategoryTags"));
 
 const PostCard = ({
   post: { _id, title, user, createdAt, category, thumbnailUrl },
@@ -21,22 +23,24 @@ const PostCard = ({
   <div className={className ? className : "col-md-6 col-sm-12 mb-2 p-4"}>
     <PostCardContainer>
       <div className="row">
-        <div className="col-5">
+        <div className="col-md-5 col-sm-12">
           <Link
             href={{
               pathname: "/post/[slug]",
               query: { slug: title, postId: _id },
             }}
           >
-            <ThumbnailImage
-              alt="blogThumb"
+            <Image
+              className="image"
+              layout="responsive"
+              alt={title}
               src={thumbnailUrl}
               height={250}
               width={200}
             />
           </Link>
         </div>
-        <div className="col-7 d-flex justify-content-around flex-column">
+        <div className="col-md-7 col-sm-12 d-flex justify-content-around flex-column">
           <div>
             <CategoryTags category={category} />
           </div>
@@ -71,12 +75,6 @@ const PostCard = ({
 );
 
 export default PostCard;
-
-const ThumbnailImage = styled(Image)`
-  min-height: 250px;
-  border-radius: 15px;
-  background-color: #efefef;
-`;
 
 const PostCardContainer = styled.div`
   height: 100%;

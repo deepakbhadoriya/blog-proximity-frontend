@@ -1,9 +1,11 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import axios from "axios";
 
-import SinglePost from "../../components/SinglePost";
 import baseUrl from "../../config/baseUrl";
 import { PostTS } from "../../utils/tsInterfaces";
+
+const SinglePost = dynamic(() => import("../../components/SinglePost"));
 
 const Post = ({ post }: { post: PostTS }) => (
   <SinglePost className="container" post={post} />

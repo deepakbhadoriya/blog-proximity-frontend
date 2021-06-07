@@ -16,3 +16,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.image {
+  border-radius: 15px;
+  background-color: #efefef;
+}
+
+.avatarImage {
+  border-radius: 25px;
+}

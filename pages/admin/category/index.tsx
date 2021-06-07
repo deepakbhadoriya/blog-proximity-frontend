@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import axios from "axios";
 
-import PrivatePage from "../../../authentication/PrivatePage";
 import { CategoryTagContainer } from "../../../components/CategoryTags";
 import baseUrl from "../../../config/baseUrl";
 import { CategoryTS } from "../../../utils/tsInterfaces";
+
+const PrivatePage = dynamic(
+  () => import("../../../authentication/PrivatePage")
+);
 
 const index = () => {
   const [name, setName] = useState("");

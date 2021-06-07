@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import axios from "axios";
 
-import InfiniteScrollPosts from "../components/InfiniteScrollPosts";
 import baseUrl from "../config/baseUrl";
 import { PostsTS } from "../utils/tsInterfaces";
+
+const InfiniteScrollPosts = dynamic(
+  () => import("../components/InfiniteScrollPosts")
+);
 
 const postLimit = 10;
 

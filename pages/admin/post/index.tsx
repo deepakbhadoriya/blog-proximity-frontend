@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import axios from "axios";
 
-import PrivatePage from "../../../authentication/PrivatePage";
 import { CategoryTagContainer } from "../../../components/CategoryTags";
-import InfiniteScrollPosts from "../../../components/InfiniteScrollPosts";
 import baseUrl from "../../../config/baseUrl";
 import { PostsTS, CategoryTS } from "../../../utils/tsInterfaces";
+
+const PrivatePage = dynamic(
+  () => import("../../../authentication/PrivatePage")
+);
+const InfiniteScrollPosts = dynamic(
+  () => import("../../../components/InfiniteScrollPosts")
+);
 
 const postLimit = 10;
 
