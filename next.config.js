@@ -5,4 +5,7 @@ module.exports = withPWA({
     dest: "public",
     swSrc: "service-worker.js",
   },
+  images: {
+    domains: ["images.unsplash.com", "placeimg.com"],
+  },
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 
 import AuthorInfo from "./AuthorInfo";
@@ -27,7 +28,12 @@ const PostCard = ({
               query: { slug: title, postId: _id },
             }}
           >
-            <ThumbnailImage src={thumbnailUrl} />
+            <ThumbnailImage
+              alt="blogThumb"
+              src={thumbnailUrl}
+              height={250}
+              width={200}
+            />
           </Link>
         </div>
         <div className="col-7 d-flex justify-content-around flex-column">
@@ -66,13 +72,10 @@ const PostCard = ({
 
 export default PostCard;
 
-const ThumbnailImage = styled.div`
+const ThumbnailImage = styled(Image)`
   min-height: 250px;
   border-radius: 15px;
   background-color: #efefef;
-  background-image: url(${(props: { src: string }) => props.src});
-  background-position: center;
-  background-size: cover;
 `;
 
 const PostCardContainer = styled.div`

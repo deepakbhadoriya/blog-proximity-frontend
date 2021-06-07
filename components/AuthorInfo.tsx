@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import styled from "styled-components";
+import Image from "next/image";
 
 const AuthorInfo = ({
   user,
@@ -19,7 +20,12 @@ const AuthorInfo = ({
     >
       <div className="d-flex">
         <div>
-          <Avatar src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png" />
+          <Avatar
+            alt="userPic"
+            src="/assets/images/profilePic.png"
+            height={50}
+            width={50}
+          />
         </div>
         <div className="d-flex flex-column justify-content-center">
           <AuthorName> {user.name}</AuthorName>
@@ -32,12 +38,7 @@ const AuthorInfo = ({
 
 export default AuthorInfo;
 
-const Avatar = styled.div`
-  height: 50px;
-  width: 50px;
-  background-image: url(${(props: { src: string }) => props.src});
-  background-size: cover;
-  background-position: center;
+const Avatar = styled(Image)`
   border-radius: 25px;
   margin-right: 10px;
 `;
