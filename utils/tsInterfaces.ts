@@ -4,7 +4,7 @@ export interface PostTS {
   description: string;
   user: { _id: string; name: string };
   createdAt: string;
-  category: { _id: string; name: string };
+  category: CategoryTS[];
   thumbnailUrl: string;
 }
 

@@ -2,8 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { CategoryTS } from "../utils/tsInterfaces";
 
-const CategoryTags = ({ category }) => (
+const CategoryTags = ({ category }: { category: CategoryTS[] }) => (
   <div className="row">
     {category.map(({ name, _id }) => (
       <CategoryTagContainer key={_id}>
