@@ -24,21 +24,26 @@ const PostCard = ({
     <PostCardContainer>
       <div className="row">
         <div className="col-md-5 col-sm-12">
-          <Link
-            href={{
-              pathname: "/post/[slug]",
-              query: { slug: title, postId: _id },
-            }}
+          <div
+            className="h-100 d-flex justify-content-center align-item-center"
+            style={{ position: "relative", minHeight: 250 }}
           >
-            <Image
-              className="image"
-              layout="responsive"
-              alt={title}
-              src={thumbnailUrl}
-              height={250}
-              width={200}
-            />
-          </Link>
+            <Link
+              href={{
+                pathname: "/post/[slug]",
+                query: { slug: title, postId: _id },
+              }}
+            >
+              <Image
+                className="image"
+                alt={title}
+                src={thumbnailUrl}
+                layout="fill"
+                objectFit="cover"
+                // quality={100}
+              />
+            </Link>
+          </div>
         </div>
         <div className="col-md-7 col-sm-12 d-flex justify-content-around flex-column">
           <div>
@@ -82,6 +87,8 @@ const PostCardContainer = styled.div`
   border: 2px solid #f5f4f4;
   padding: 10px;
   transition: linear 300ms;
+  display: flex;
+  align-items: center;
   :hover {
     box-shadow: 5px 20px 20px #f3f3f3;
   }

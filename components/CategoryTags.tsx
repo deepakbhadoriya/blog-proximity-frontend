@@ -2,8 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { CategoryTS } from "../utils/tsInterfaces";
 
-const CategoryTags = ({ category }) => (
+const CategoryTags = ({ category }: { category: CategoryTS[] }) => (
   <div className="row">
     {category.map(({ name, _id }) => (
       <CategoryTagContainer key={_id}>
@@ -25,8 +26,8 @@ export default CategoryTags;
 export const CategoryTagContainer = styled.div`
   font-size: 14px;
   font-weight: 600;
-  color: #a5a5a5;
-  background-color: #f9f9ff;
+  color: #525252;
+  background-color: #fff;
   border-radius: 8px;
   padding: 5px 10px;
   border: 1px solid #e5e5e5;

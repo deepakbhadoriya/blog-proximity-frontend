@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import styled from "styled-components";
 import Link from "next/link";
 
 import { AuthContext } from "../authentication/AuthContext";
@@ -14,9 +15,9 @@ const Navbar = () => {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light px-5 mb-5"
-      style={{ zIndex: 100 }}
+      style={{ zIndex: 100, backgroundColor: "#fff !important" }}
     >
-      <div className="navbar-nav mr-auto d-flex flex-row ">
+      <NavContainer className="navbar-nav mr-auto d-flex flex-row ">
         <div className="nav-item active">
           <span className="nav-link mx-1">
             <Link href="/">Home</Link>
@@ -54,9 +55,15 @@ const Navbar = () => {
             </div>
           </>
         )}
-      </div>
+      </NavContainer>
     </nav>
   );
 };
 
 export default Navbar;
+
+const NavContainer = styled.div`
+  a {
+    color: #525252;
+  }
+`;
