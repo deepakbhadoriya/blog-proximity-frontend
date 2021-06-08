@@ -18,15 +18,16 @@ const SinglePost = ({
   <div className={className}>
     <div className="row px-md-5 mx-md-5 mx-sm-2 px-sm-0 ">
       <div className="col-12 mt-md-2 mt-sm-2">
-        {/* @ts-ignore */}
-        <Image
-          className="image"
-          layout="responsive"
-          alt={title}
-          src={thumbnailUrl}
-          height={350}
-          width={700}
-        />
+        <div style={{ position: "relative", minHeight: 300 }}>
+          <Image
+            className="image"
+            alt={title}
+            src={thumbnailUrl}
+            layout="fill"
+            objectFit="cover"
+            // quality={100}
+          />
+        </div>
       </div>
       <div className="col-12 d-flex flex-column align-items-center">
         <BlogTitle>

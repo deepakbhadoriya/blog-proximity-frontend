@@ -49,7 +49,7 @@ const AuthorName = styled.div`
 
 const Time = styled.div`
   font-size: 14px;
-  color: #a5a5a5;
+  color: #525252;
   font-weight: 450;
   font-size: 14px;
 `;

@@ -55,7 +55,6 @@ const AuthContextProvider = ({ children }: { children: ReactFragment }) => {
       loadUser,
     ]
   );
-  // @ts-ignore
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 

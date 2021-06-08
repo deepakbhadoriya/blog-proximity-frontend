@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 
 const PrivatePage = ({ children }: any) => {
   const router = useRouter();
-  const { isAuthenticated, loading }: any = useContext(AuthContext);
+  const { isAuthenticated, loading } = useContext(AuthContext);
 
   if (!isAuthenticated && !loading) router.push("/");
 

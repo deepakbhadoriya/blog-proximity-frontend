@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Head from "next/head";
+
 import type { AppProps } from "next/app";
 
 import AuthContextProvider from "../authentication/AuthContextProvider";
@@ -7,7 +8,7 @@ import Navbar from "../components/Navbar";
 import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <>
+  <html lang="en">
     <Head>
       <title>Blog build using NEXT, TS, NODE,</title>
       <meta
@@ -31,6 +32,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
         <Component {...pageProps} />
       </Fragment>
     </AuthContextProvider>
-  </>
+  </html>
 );
 export default MyApp;

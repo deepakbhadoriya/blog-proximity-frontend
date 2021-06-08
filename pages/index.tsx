@@ -44,7 +44,7 @@ const Home = ({ posts }: { posts: PostsTS }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     const res: { data: Object } = await axios.get(
       `${baseUrl}/post?limit=${postLimit}&page=1`

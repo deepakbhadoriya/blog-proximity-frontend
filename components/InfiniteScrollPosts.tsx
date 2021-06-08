@@ -23,7 +23,7 @@ const InfiniteScrollPosts = ({
       dataLength={posts.length}
       next={next}
       hasMore={posts.length !== parseInt(totalPosts)}
-      loader={<h4>Loading...</h4>}
+      loader={<h2>Loading...</h2>}
       endMessage={
         <p style={{ textAlign: "center" }}>
           <b>Yay! You have seen it all</b>
