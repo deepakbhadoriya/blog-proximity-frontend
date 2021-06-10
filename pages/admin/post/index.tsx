@@ -23,17 +23,17 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
     category: [],
   };
 
+  const postsInitial = {
+    posts: [],
+    totalPost: "0",
+    currentPage: "1",
+  };
   const [update, setUpdate] = useState(false);
   const [editPostId, setEditPostId] = useState(false);
   const [post, setPost] = useState(postInitial);
-  const [localPosts, setLocalPosts] = useState({
-    posts: [],
-    totalPost: 0,
-    currentPage: 1,
-  });
+  const [localPosts, setLocalPosts] = useState(postsInitial);
 
   const fetchMorePost = async () => {
-    // @ts-ignore
     const page = parseInt(localPosts.currentPage);
     try {
       const res: { data: PostsTS } = await axios.get(
