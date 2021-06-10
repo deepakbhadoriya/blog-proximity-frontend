@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# Cypress examples
+/cypress/integration/examples
+
 # next.js
 /.next/
 /out/

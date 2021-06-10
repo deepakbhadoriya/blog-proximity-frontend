@@ -20,13 +20,17 @@ const InfiniteScrollPosts = ({
 }) => {
   return (
     <InfiniteScroll
+      test-data-py="infinitePostContainer"
       dataLength={posts.length}
       next={next}
       hasMore={posts.length !== parseInt(totalPosts)}
       loader={<h2>Loading...</h2>}
       endMessage={
-        <p style={{ textAlign: "center" }}>
-          <b>Yay! You have seen it all</b>
+        <p
+          test-data-py="postBottom"
+          style={{ textAlign: "center", fontWeight: 600 }}
+        >
+          Yay! You have seen it all
         </p>
       }
       // below props only if you need pull down functionality
