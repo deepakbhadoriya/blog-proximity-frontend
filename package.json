@@ -6,16 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "cypress": "cypress open",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
+    "fix-lint": "eslint --fix --fix-type suggestion --fix-type suggestion --fix-type problem --fix-type suggestion,layout .",
     "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
     "prepare": "husky install"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.9",
     "axios": "^0.21.1",
+    "cypress": "^7.5.0",
     "dayjs": "^1.10.5",
     "next": "10.2.3",
     "next-pwa": "^5.2.21",
@@ -25,6 +28,7 @@
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
     "@types/react": "17.0.8",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
@@ -32,9 +36,9 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.24.0",
+    "husky": "^6.0.0",
     "prettier": "^2.3.0",
-    "typescript": "4.3.2",
-    "husky": "^6.0.0"
+    "typescript": "4.3.2"
   },
   "husky": {
     "hooks": {

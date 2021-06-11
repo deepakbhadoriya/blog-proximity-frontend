@@ -37,9 +37,10 @@ const PostCard = ({
               <Image
                 className="image"
                 alt={title}
-                src={thumbnailUrl}
+                src={thumbnailUrl || "https://placeimg.com/1000/600/any"}
                 layout="fill"
                 objectFit="cover"
+                test-data-py="blogPage"
                 // quality={100}
               />
             </Link>

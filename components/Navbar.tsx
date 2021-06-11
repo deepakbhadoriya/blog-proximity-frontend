@@ -44,14 +44,18 @@ const Navbar = () => {
         ) : (
           <>
             <div className="nav-item">
-              <span className="nav-link mx-1">
-                <Link href="/auth/signup">SignUp</Link>
-              </span>
+              <Link href="/auth/signup">
+                <span className="nav-link mx-1" test-data-py="visit-signUp">
+                  SignUp
+                </span>
+              </Link>
             </div>
             <div className="nav-item">
-              <span className="nav-link mx-1">
-                <Link href="/auth/login">Login</Link>
-              </span>
+              <Link href="/auth/login">
+                <span className="nav-link mx-1" test-data-py="visit-login">
+                  Login
+                </span>
+              </Link>
             </div>
           </>
         )}
