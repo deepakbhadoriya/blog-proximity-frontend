@@ -36,6 +36,11 @@ const Navbar = () => {
               </span>
             </div>
             <div className="nav-item">
+              <span className="nav-link mx-1">
+                <Link href="/admin/profile"> Profile</Link>
+              </span>
+            </div>
+            <div className="nav-item">
               <span className="nav-link mx-1" onClick={setUserLogOut}>
                 LogOut
               </span>

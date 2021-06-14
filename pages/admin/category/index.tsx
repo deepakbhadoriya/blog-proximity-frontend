@@ -11,12 +11,13 @@ const PrivatePage = dynamic(
 );
 
 const index = () => {
-  const [name, setName] = useState("");
+  const categoryInitial = { name: "", scrollType: "infiniteScroll" };
+  const [category, setCategory] = useState(categoryInitial);
   const [editCatId, setEditCatId] = useState(false as Boolean | string);
   const [localCategories, setLocalCategories] = useState([] as CategoryTS[]);
 
-  const handleEdit = (catId: string, catName: string) => {
-    setName(catName);
+  const handleEdit = (catId: string, catName: string, scrollType: string) => {
+    setCategory({ name: catName, scrollType });
     setEditCatId(catId);
   };
 
@@ -41,21 +42,24 @@ const index = () => {
 
     try {
       if (editCatId) {
-        await axios.put(`${baseUrl}/category/${editCatId}`, { name });
-        setEditCatId(false);
+        await axios.put(`${baseUrl}/category/${editCatId}`, category);
       } else {
-        await axios.post(`${baseUrl}/category`, { name });
+        await axios.post(`${baseUrl}/category`, category);
       }
       getCategories();
-      setName("");
+      handleReset();
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleReset = () => {
-    setName("");
+    setCategory(categoryInitial);
     setEditCatId(false);
+  };
+
+  const handleChange = ({ target: { value, name } }: any) => {
+    setCategory({ ...category, [name]: value });
   };
 
   return (
@@ -72,12 +76,48 @@ const index = () => {
                 <input
                   type="text"
                   name="name"
-                  value={name}
-                  onChange={({ target: { value } }) => setName(value)}
+                  value={category.name}
+                  onChange={handleChange}
                   className="form-control mb-2"
                   id="postTitle"
-                  placeholder="Post title"
+                  placeholder="Category name"
                 />
+                <label>Category Scroll type</label>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="scrollType"
+                    value="infiniteScroll"
+                    id="flexRadioDefault1"
+                    checked={category.scrollType === "infiniteScroll"}
+                    onChange={handleChange}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault1"
+                  >
+                    Infinite Scroll
+                  </label>
+                </div>
+                <div className="form-check mb-4">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="scrollType"
+                    value="pagination"
+                    id="flexRadioDefault2"
+                    checked={category.scrollType === "pagination"}
+                    onChange={handleChange}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexRadioDefault2"
+                  >
+                    Pagination
+                  </label>
+                </div>
+
                 <button type="submit" className="btn btn-primary">
                   {editCatId ? "Update Category" : "Add Category"}
                 </button>
@@ -93,32 +133,38 @@ const index = () => {
           </div>
           <div className="col-md-6 col-sm-12 mb-5">
             <h4>Your Categories</h4>
-            {localCategories.map(({ _id, name }: any) => (
+            {localCategories.map(({ _id, name, scrollType }: any) => (
               <div className="mb-3" key={_id}>
-                <CategoryTagContainer>
-                  {name}
-                  <span
-                    onClick={() => handleEdit(_id, name)}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: 20,
-                      marginLeft: 10,
-                      color: "blue",
-                    }}
-                  >
-                    ✎
-                  </span>
-                  <span
-                    onClick={() => handleDelete(_id)}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: 20,
-                      marginLeft: 10,
-                      color: "red",
-                    }}
-                  >
-                    ❌
-                  </span>
+                <CategoryTagContainer className="d-flex justify-content-between w-100 ">
+                  <div>
+                    {name}
+                    <br />
+                    <small>Scroll type: {scrollType}</small>
+                  </div>
+                  <div>
+                    <span
+                      onClick={() => handleEdit(_id, name, scrollType)}
+                      style={{
+                        cursor: "pointer",
+                        fontSize: 20,
+                        marginLeft: 10,
+                        color: "blue",
+                      }}
+                    >
+                      ✎
+                    </span>
+                    <span
+                      onClick={() => handleDelete(_id)}
+                      style={{
+                        cursor: "pointer",
+                        fontSize: 20,
+                        marginLeft: 10,
+                        color: "red",
+                      }}
+                    >
+                      ❌
+                    </span>
+                  </div>
                 </CategoryTagContainer>
               </div>
             ))}

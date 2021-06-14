@@ -3,13 +3,14 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import Image from "next/image";
+import { UserTS } from "../utils/tsInterfaces";
 
 const AuthorInfo = ({
   user,
   createdAt,
 }: {
-  user: { name: string; _id: string };
-  createdAt: string;
+  user: UserTS;
+  createdAt?: string;
 }) => {
   return (
     <Link
@@ -23,7 +24,7 @@ const AuthorInfo = ({
           <Image
             className="avatarImage"
             alt="userPic"
-            src="/assets/images/profilePic.png"
+            src={user.avatar ? user.avatar : "/assets/images/profilePic.png"}
             // layout="responsive"
             height={50}
             width={50}
@@ -31,7 +32,9 @@ const AuthorInfo = ({
         </div>
         <div className="d-flex flex-column justify-content-center">
           <AuthorName> {user.name}</AuthorName>
-          <Time>{dayjs(createdAt).format("MMM DD, YYYY ")} </Time>
+          {createdAt && (
+            <Time>{dayjs(createdAt).format("MMM DD, YYYY ")} </Time>
+          )}
         </div>
       </div>
     </Link>

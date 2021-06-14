@@ -12,13 +12,16 @@ export interface PostsTS {
   posts: PostTS[];
   currentPage: string;
   totalPosts: string;
+  totalPages: string;
 }
 
 export interface UserTS {
-  date: string;
-  email: string;
+  avatar?: string;
+  date?: string;
+  email?: string;
   name: string;
-  _id: string;
+  _id?: string;
+  bio?: string;
 }
 
 export interface CategoryTS {

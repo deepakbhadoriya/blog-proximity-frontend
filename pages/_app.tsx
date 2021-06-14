@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import AuthContextProvider from "../authentication/AuthContextProvider";
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
+import "../styles/bootstrap.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <html lang="en">
