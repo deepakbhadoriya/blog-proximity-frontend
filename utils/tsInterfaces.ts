@@ -12,6 +12,7 @@ export interface PostsTS {
   posts: PostTS[];
   currentPage: string;
   totalPosts: string;
+  totalPages: string;
 }
 
 export interface UserTS {

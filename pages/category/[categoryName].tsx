@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
@@ -7,6 +7,9 @@ import { PostsTS } from "../../utils/tsInterfaces";
 
 const InfiniteScrollPosts = dynamic(
   () => import("../../components/InfiniteScrollPosts")
+);
+const PaginationPosts = dynamic(
+  () => import("../../components/PaginationPosts")
 );
 
 const postLimit = 10;
@@ -21,6 +24,22 @@ const CategoryPosts = ({
   categoryId: string;
 }) => {
   const [localPosts, setLocalPosts] = useState(posts);
+  const [scrollType, setScrollType] = useState("loading");
+
+  const getCategory = async () => {
+    try {
+      const res: { data: any } = await axios.get(
+        `${baseUrl}/category/${categoryId}`
+      );
+      setScrollType(res.data.scrollType);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
 
   const fetchMorePost = async () => {
     try {
@@ -37,6 +56,20 @@ const CategoryPosts = ({
     }
   };
 
+  const handlePagination = async ({ selected }: any) => {
+    try {
+      const res: { data: PostsTS } = await axios.get(
+        `${baseUrl}/post?category=${categoryId}&limit=${postLimit}&page=${
+          selected + 1
+        }`
+      );
+      const postsData = res.data;
+      setLocalPosts(postsData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -44,7 +77,16 @@ const CategoryPosts = ({
           <h1>All posts from {categoryName}</h1>
         </div>
       </div>
-      <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
+      {scrollType === "infiniteScroll" && (
+        <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
+      )}
+      {scrollType === "pagination" && (
+        <PaginationPosts
+          postData={localPosts}
+          handlePagination={handlePagination}
+        />
+      )}
+      {scrollType === "loading" && <h2>Loading</h2>}
     </div>
   );
 };
