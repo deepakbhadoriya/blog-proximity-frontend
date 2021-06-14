@@ -16,10 +16,12 @@ export interface PostsTS {
 }
 
 export interface UserTS {
-  date: string;
-  email: string;
+  avatar?: string;
+  date?: string;
+  email?: string;
   name: string;
-  _id: string;
+  _id?: string;
+  bio?: string;
 }
 
 export interface CategoryTS {
