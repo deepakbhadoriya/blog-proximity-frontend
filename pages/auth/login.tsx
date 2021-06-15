@@ -12,7 +12,6 @@ const Login = () => {
   if (isAuthenticated) router.push("/admin/post");
 
   const [user, setUser] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
 
   const handleOnChange = ({ target: { value, name } }: any) =>
     setUser((prevState) => ({ ...prevState, [name]: value }));
@@ -24,7 +23,6 @@ const Login = () => {
       setUserLogin(res.data.token);
     } catch (error) {
       console.log(error);
-      setError("Wrong login credentials");
     }
   };
 
@@ -32,7 +30,6 @@ const Login = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-6 col-sm-10 offset-md-3 offset-sm-1">
-          <small style={{ color: "red" }}>{error !== "" && error}</small>
           <form onSubmit={handleOnSubmit}>
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Email address</label>
@@ -46,9 +43,6 @@ const Login = () => {
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               />
-              <small id="emailHelp" className="form-text text-muted">
-                We will never share your email with anyone else.
-              </small>
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputPassword1">Password</label>
@@ -62,16 +56,7 @@ const Login = () => {
                 placeholder="Password"
               />
             </div>
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" htmlFor="exampleCheck1">
-                Check me out
-              </label>
-            </div>
+
             <button type="submit" className="btn btn-primary">
               Submit
             </button>

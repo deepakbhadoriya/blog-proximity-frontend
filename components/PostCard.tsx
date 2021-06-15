@@ -26,7 +26,7 @@ const PostCard = ({
         <div className="col-md-5 col-sm-12">
           <div
             className="h-100 d-flex justify-content-center align-item-center"
-            style={{ position: "relative", minHeight: 250 }}
+            style={{ position: "relative", minHeight: 250, width: 180 }}
           >
             <Link
               href={{

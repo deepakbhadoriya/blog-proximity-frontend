@@ -12,7 +12,6 @@ const SignUp = () => {
   if (isAuthenticated) router.push("/admin/post");
 
   const [user, setUser] = useState({ name: "", email: "", password: "" });
-  const [error, setError] = useState("");
 
   const handleOnChange = ({ target: { value, name } }: any) =>
     setUser((prevState) => ({ ...prevState, [name]: value }));
@@ -24,7 +23,6 @@ const SignUp = () => {
       setUserLogin(res.data.token);
     } catch (error) {
       console.log(error);
-      setError(error.response);
     }
   };
 
@@ -32,7 +30,6 @@ const SignUp = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-6 col-sm-10 offset-md-3 offset-sm-1">
-          <small style={{ color: "red" }}>{error !== "" && error}</small>
           <form onSubmit={handleOnSubmit}>
             <div className="form-group">
               <label htmlFor="exampleName">Name</label>
@@ -68,16 +65,6 @@ const SignUp = () => {
                 id="exampleInputPassword1"
                 placeholder="Password"
               />
-            </div>
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" htmlFor="exampleCheck1">
-                Check me out
-              </label>
             </div>
             <button type="submit" className="btn btn-primary">
               Submit
