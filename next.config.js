@@ -6,6 +6,6 @@ module.exports = withPWA({
     swSrc: "service-worker.js",
   },
   images: {
-    domains: ["images.unsplash.com", "placeimg.com"],
+    domains: ["images.unsplash.com", "placeimg.com", "static.toiimg.com"],
   },
 });
