@@ -25,7 +25,7 @@ const AuthorInfo = ({
             className="avatarImage"
             alt="userPic"
             src={user.avatar ? user.avatar : "/assets/images/profilePic.png"}
-            // layout="responsive"
+            objectFit="cover"
             height={50}
             width={50}
           />

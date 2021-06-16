@@ -20,45 +20,45 @@ const PostCard = ({
   onEdit: any;
   onDelete: any;
 }) => (
-  <div className={className ? className : "col-md-6 col-sm-12 mb-2 p-4"}>
+  <div
+    className={className ? className : "col-lg-4 col-md-6 col-sm-12 mb-2 p-4"}
+  >
     <PostCardContainer>
-      <div className="row">
-        <div className="col-md-5 col-sm-12">
-          <div
-            className="h-100 d-flex justify-content-center align-item-center"
-            style={{ position: "relative", minHeight: 250, width: 180 }}
-          >
-            <Link
-              href={{
-                pathname: "/post/[slug]",
-                query: { slug: title, postId: _id },
-              }}
-            >
-              <Image
-                className="image"
-                alt={title}
-                src={thumbnailUrl || "https://placeimg.com/1000/600/any"}
-                layout="fill"
-                objectFit="cover"
-                test-data-py="blogPage"
-                // quality={100}
-              />
-            </Link>
-          </div>
-        </div>
-        <div className="col-md-7 col-sm-12 d-flex justify-content-around flex-column">
-          <div>
-            <CategoryTags category={category} />
-          </div>
+      <div className="row w-100">
+        <div className="col-md-12 col-sm-12 mb-3">
           <Link
             href={{
               pathname: "/post/[slug]",
               query: { slug: title, postId: _id },
             }}
           >
-            <h2>{title}</h2>
+            <Image
+              className="image"
+              alt={title}
+              src={thumbnailUrl || "https://placeimg.com/1000/600/any"}
+              test-data-py="blogPage"
+              layout="responsive"
+              objectFit="cover"
+              height={200}
+              width={200}
+            />
           </Link>
-          <AuthorInfo user={user} createdAt={createdAt} />
+        </div>
+        <div className="col-md-12 col-sm-12">
+          <div className="d-flex justify-content-between flex-column">
+            <div>
+              <CategoryTags category={category} />
+            </div>
+            <Link
+              href={{
+                pathname: "/post/[slug]",
+                query: { slug: title, postId: _id },
+              }}
+            >
+              <h2>{title}</h2>
+            </Link>
+            <AuthorInfo user={user} createdAt={createdAt} />
+          </div>
         </div>
         <div className="col-12 d-flex justify-content-end">
           {onEdit && (
@@ -84,12 +84,13 @@ export default PostCard;
 
 const PostCardContainer = styled.div`
   height: 100%;
+  width: 100%;
   border-radius: 20px;
   border: 2px solid #f5f4f4;
-  padding: 10px;
+  padding: 12px 0;
+  justify-content: center;
   transition: linear 300ms;
   display: flex;
-  align-items: center;
   :hover {
     box-shadow: 5px 20px 20px #f3f3f3;
   }

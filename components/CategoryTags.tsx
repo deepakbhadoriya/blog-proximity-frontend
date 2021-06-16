@@ -33,4 +33,7 @@ export const CategoryTagContainer = styled.div`
   border: 1px solid #e5e5e5;
   margin: 10px;
   text-transform: capitalize;
+  a {
+    color: #525252;
+  }
 `;
