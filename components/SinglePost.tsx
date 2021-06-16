@@ -18,21 +18,18 @@ const SinglePost = ({
   <div className={className}>
     <div className="row px-md-5 mx-md-5 mx-sm-2 px-sm-0 ">
       <div className="col-12 mt-md-2 mt-sm-2">
-        <div style={{ position: "relative", minHeight: 300 }}>
-          <Image
-            className="image"
-            alt={title}
-            src={thumbnailUrl || "https://placeimg.com/1000/600/any"}
-            layout="fill"
-            objectFit="cover"
-            // quality={100}
-          />
-        </div>
+        <Image
+          // className="image"
+          alt={title}
+          src={thumbnailUrl || "https://placeimg.com/1000/600/any"}
+          layout="responsive"
+          objectFit="contain"
+          width={700}
+          height={400}
+        />
       </div>
       <div className="col-12 d-flex flex-column align-items-center">
-        <BlogTitle>
-          <div>{title}</div>
-        </BlogTitle>
+        <BlogTitle>{title}</BlogTitle>
         <div className=" my-4 d-inline-block">
           <AuthorInfo user={user} createdAt={createdAt} />
         </div>
@@ -48,7 +45,7 @@ const SinglePost = ({
 
 export default SinglePost;
 
-const BlogTitle = styled.div`
+const BlogTitle = styled.h1`
   font-size: 30px;
   color: black;
   text-align: center;

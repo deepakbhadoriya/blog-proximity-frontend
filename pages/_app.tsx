@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import Head from "next/head";
 import type { AppProps } from "next/app";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import AuthContextProvider from "../authentication/AuthContextProvider";
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
-import "../styles/bootstrap.css";
 import Alert from "../components/Alert";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
