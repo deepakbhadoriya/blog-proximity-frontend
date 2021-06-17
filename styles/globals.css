@@ -24,3 +24,95 @@ a {
 .avatarImage {
   border-radius: 25px;
 }
+
+.alertContainer {
+  position: fixed;
+  z-index: 110;
+  top: 100px;
+  right: 40px;
+}
+
+.alertBox {
+  padding: 10px 30px;
+}
+
+.authorName {
+  font-weight: 800;
+  text-transform: capitalize;
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.time {
+  font-size: 14px;
+  color: #525252;
+  font-weight: 450;
+  font-size: 14px;
+}
+
+.categoryTagContainer {
+  font-size: 14px;
+  font-weight: 600;
+  color: #525252;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  border: 1px solid #e5e5e5;
+  margin: 10px;
+  text-transform: capitalize;
+}
+
+.categoryTagContainer a {
+  color: #525252;
+}
+
+.postCardContainer {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  border: 2px solid #f5f4f4;
+  padding: 12px 0;
+  justify-content: center;
+  transition: linear 300ms;
+  display: flex;
+}
+
+.postCardContainer:hover {
+  box-shadow: 5px 20px 20px #f3f3f3;
+}
+
+.blogTitle {
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+.navWrapper {
+  width: 100%;
+  z-index: 101;
+  position: fixed;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0px;
+  align-items: center;
+}
+
+.navContainer span {
+  color: #525252;
+  padding: 0px 5px;
+  font-weight: 600;
+}
+
+.navContainer a {
+  color: #525252;
+  padding: 0px 5px;
+  font-weight: 600;
+}

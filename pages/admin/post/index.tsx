@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
-import { CategoryTagContainer } from "../../../components/CategoryTags";
 import baseUrl from "../../../config/baseUrl";
 import { PostsTS, PostTS, CategoryTS } from "../../../utils/tsInterfaces";
 
@@ -176,7 +175,7 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
                 </div>
                 <div className="mb-3">
                   {post.category.map((item: any) => (
-                    <CategoryTagContainer key={item._id}>
+                    <div className="categoryTagContainer" key={item._id}>
                       {item.name}
                       <span
                         onClick={() =>
@@ -191,7 +190,7 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
                       >
                         ❌
                       </span>
-                    </CategoryTagContainer>
+                    </div>
                   ))}
                 </div>
                 <label htmlFor="exampleInputPassword1">Description</label>

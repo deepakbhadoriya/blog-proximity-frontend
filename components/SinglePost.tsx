@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import styled from "styled-components";
 
 import { PostTS, UserTS } from "../utils/tsInterfaces";
 
@@ -29,7 +28,7 @@ const SinglePost = ({
         />
       </div>
       <div className="col-12 d-flex flex-column align-items-center">
-        <BlogTitle>{title}</BlogTitle>
+        <h1 className="blogTitle">{title}</h1>
         <div className=" my-4 d-inline-block">
           <AuthorInfo user={user as UserTS} createdAt={createdAt} />
         </div>
@@ -44,11 +43,3 @@ const SinglePost = ({
 );
 
 export default SinglePost;
-
-const BlogTitle = styled.h1`
-  font-size: 30px;
-  color: black;
-  text-align: center;
-  font-weight: 700;
-  padding-bottom: 20px;
-`;

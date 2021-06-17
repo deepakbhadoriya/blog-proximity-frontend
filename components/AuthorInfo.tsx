@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
-import styled from "styled-components";
 import Image from "next/image";
 import { UserTS } from "../utils/tsInterfaces";
 
@@ -31,9 +30,11 @@ const AuthorInfo = ({
           />
         </div>
         <div className="d-flex flex-column justify-content-center">
-          <AuthorName> {user.name}</AuthorName>
+          <div className="authorName"> {user.name}</div>
           {createdAt && (
-            <Time>{dayjs(createdAt).format("MMM DD, YYYY ")} </Time>
+            <div className="time">
+              {dayjs(createdAt).format("MMM DD, YYYY ")}{" "}
+            </div>
           )}
         </div>
       </div>
@@ -42,17 +43,3 @@ const AuthorInfo = ({
 };
 
 export default AuthorInfo;
-
-const AuthorName = styled.div`
-  font-weight: 800;
-  text-transform: capitalize;
-  font-size: 18px;
-  margin-bottom: 3px;
-`;
-
-const Time = styled.div`
-  font-size: 14px;
-  color: #525252;
-  font-weight: 450;
-  font-size: 14px;
-`;
