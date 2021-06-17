@@ -30,6 +30,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/estree": "0.0.48",
     "@types/jest": "^26.0.23",
     "@types/react": "17.0.8",
     "@types/react-paginate": "^7.1.0",

@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 
 import baseUrl from "../../config/baseUrl";
-import { PostsTS } from "../../utils/tsInterfaces";
+import { PostsTS, CategoryTS } from "../../utils/tsInterfaces";
 
 const InfiniteScrollPosts = dynamic(
   () => import("../../components/InfiniteScrollPosts")
@@ -28,7 +28,7 @@ const CategoryPosts = ({
 
   const getCategory = async () => {
     try {
-      const res: { data: any } = await axios.get(
+      const res: { data: CategoryTS } = await axios.get(
         `${baseUrl}/category/${categoryId}`
       );
       setScrollType(res.data.scrollType);

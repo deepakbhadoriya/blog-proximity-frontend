@@ -3,7 +3,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 
-import { PostTS } from "../utils/tsInterfaces";
+import { PostTS, UserTS } from "../utils/tsInterfaces";
 
 const AuthorInfo = dynamic(() => import("./AuthorInfo"));
 const CategoryTags = dynamic(() => import("./CategoryTags"));
@@ -31,7 +31,7 @@ const SinglePost = ({
       <div className="col-12 d-flex flex-column align-items-center">
         <BlogTitle>{title}</BlogTitle>
         <div className=" my-4 d-inline-block">
-          <AuthorInfo user={user} createdAt={createdAt} />
+          <AuthorInfo user={user as UserTS} createdAt={createdAt} />
         </div>
         <div className="mb-2">
           <CategoryTags category={category} />

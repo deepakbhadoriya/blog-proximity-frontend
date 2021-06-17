@@ -6,8 +6,7 @@ import Link from "next/link";
 import { AuthContext } from "../authentication/AuthContext";
 
 const Navbar = () => {
-  const { loadUser, isAuthenticated, setUserLogOut }: any =
-    useContext(AuthContext);
+  const { loadUser, isAuthenticated, setUserLogOut } = useContext(AuthContext);
 
   useEffect(() => {
     loadUser();

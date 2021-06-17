@@ -1,9 +1,9 @@
 export interface PostTS {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
-  user: { _id: string; name: string };
-  createdAt: string;
+  user?: { _id: string; name: string };
+  createdAt?: string;
   category: CategoryTS[];
   thumbnailUrl: string;
 }
@@ -28,5 +28,6 @@ export interface CategoryTS {
   name: string;
   _id: string;
   createdAt: string;
+  scrollType: string;
   user: UserTS;
 }

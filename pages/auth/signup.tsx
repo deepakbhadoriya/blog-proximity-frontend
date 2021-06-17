@@ -7,16 +7,18 @@ import { AuthContext } from "../../authentication/AuthContext";
 
 const SignUp = () => {
   const router = useRouter();
-  const { isAuthenticated, setUserLogin }: any = useContext(AuthContext);
+  const { isAuthenticated, setUserLogin } = useContext(AuthContext);
   // already logged in redirect
   if (isAuthenticated) router.push("/admin/post");
 
   const [user, setUser] = useState({ name: "", email: "", password: "" });
 
-  const handleOnChange = ({ target: { value, name } }: any) =>
+  const handleOnChange = ({
+    target: { value, name },
+  }: React.ChangeEvent<HTMLInputElement>) =>
     setUser((prevState) => ({ ...prevState, [name]: value }));
 
-  const handleOnSubmit = async (e: any) => {
+  const handleOnSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${baseUrl}/auth/register`, user);
