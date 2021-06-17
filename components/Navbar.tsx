@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import Image from "next/image";
-import styled from "styled-components";
 import Link from "next/link";
 
 import { AuthContext } from "../authentication/AuthContext";
@@ -14,8 +13,8 @@ const Navbar = () => {
 
   return (
     <>
-      <NavWrapper>
-        <NavContainer className="container">
+      <div className="navWrapper">
+        <div className="container navContainer">
           <Link href="/">
             <Image
               src="/assets/images/logo.png"
@@ -62,43 +61,11 @@ const Navbar = () => {
               </div>
             </div>
           )}
-        </NavContainer>
-      </NavWrapper>
-      <NavHeight />
+        </div>
+      </div>
+      <div style={{ height: 100 }} />
     </>
   );
 };
 
 export default Navbar;
-
-const NavHeight = styled.div`
-  height: 100px;
-`;
-
-const NavWrapper = styled.nav`
-  width: 100%;
-  z-index: 101;
-  position: fixed;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid #c3c3c3;
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 10px 0px;
-  align-items: center;
-  span {
-    color: #525252;
-    padding: 0px 5px;
-    font-weight: 600;
-  }
-  div {
-    a {
-      color: #525252;
-      padding: 0px 5px;
-      font-weight: 600;
-    }
-  }
-`;

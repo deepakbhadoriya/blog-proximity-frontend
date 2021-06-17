@@ -1,31 +1,19 @@
 import React from "react";
-import styled from "styled-components";
 
 const Alert = ({ alerts }: any) => {
   return (
-    <AlertContainer>
+    <div className="alertContainer">
       {alerts.map((error: any) => (
-        <AlertBox
+        <div
           key={error.key}
-          className={`alert alert-${error.className} text-center`}
+          className={`alertBox alert alert-${error.className} text-center`}
           role="alert"
         >
           {error.message}
-        </AlertBox>
+        </div>
       ))}
-    </AlertContainer>
+    </div>
   );
 };
 
 export default Alert;
-
-const AlertContainer = styled.div`
-  position: fixed;
-  z-index: 110;
-  top: 100px;
-  right: 40px;
-`;
-
-const AlertBox = styled.div`
-  padding: 10px 30px;
-`;

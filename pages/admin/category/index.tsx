@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
-import { CategoryTagContainer } from "../../../components/CategoryTags";
 import baseUrl from "../../../config/baseUrl";
 import { CategoryTS } from "../../../utils/tsInterfaces";
 
@@ -135,7 +134,7 @@ const index = () => {
             <h4>Your Categories</h4>
             {localCategories.map(({ _id, name, scrollType }: any) => (
               <div className="mb-3" key={_id}>
-                <CategoryTagContainer className="d-flex justify-content-between w-100 ">
+                <div className="categoryTagContainer d-flex justify-content-between w-100 ">
                   <div>
                     {name}
                     <br />
@@ -165,7 +164,7 @@ const index = () => {
                       ❌
                     </span>
                   </div>
-                </CategoryTagContainer>
+                </div>
               </div>
             ))}
           </div>

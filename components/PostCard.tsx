@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import styled from "styled-components";
 
 import { PostTS, UserTS } from "../utils/tsInterfaces";
 
@@ -23,7 +22,7 @@ const PostCard = ({
   <div
     className={className ? className : "col-lg-4 col-md-6 col-sm-12 mb-2 p-4"}
   >
-    <PostCardContainer>
+    <div className="postCardContainer">
       <div className="row w-100">
         <div className="col-md-12 col-sm-12 mb-3">
           <Link
@@ -76,22 +75,8 @@ const PostCard = ({
           )}
         </div>
       </div>
-    </PostCardContainer>
+    </div>
   </div>
 );
 
 export default PostCard;
-
-const PostCardContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  border-radius: 20px;
-  border: 2px solid #f5f4f4;
-  padding: 12px 0;
-  justify-content: center;
-  transition: linear 300ms;
-  display: flex;
-  :hover {
-    box-shadow: 5px 20px 20px #f3f3f3;
-  }
-`;
