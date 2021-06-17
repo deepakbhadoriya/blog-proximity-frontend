@@ -5,7 +5,7 @@ describe("visit homepage and load all post", () => {
   it("Visit Landing Homepage ", () => {
     cy.visit(baseUrl);
     // * add total page accordingly
-    const totalPage = 2;
+    const totalPage = 4;
     let currentPage = 1;
     while (currentPage <= totalPage) {
       cy.scrollTo("bottom", { ensureScrollable: true, duration: 2000 });
