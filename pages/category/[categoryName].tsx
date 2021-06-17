@@ -65,6 +65,7 @@ const CategoryPosts = ({
       );
       const postsData = res.data;
       setLocalPosts(postsData);
+      window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
     }
