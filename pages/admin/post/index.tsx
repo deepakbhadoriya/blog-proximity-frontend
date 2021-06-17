@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { CategoryTagContainer } from "../../../components/CategoryTags";
 import baseUrl from "../../../config/baseUrl";
-import { PostsTS, CategoryTS } from "../../../utils/tsInterfaces";
+import { PostsTS, PostTS, CategoryTS } from "../../../utils/tsInterfaces";
 
 const PrivatePage = dynamic(
   () => import("../../../authentication/PrivatePage")
@@ -25,13 +25,14 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
 
   const postsInitial = {
     posts: [],
-    totalPost: "0",
+    totalPosts: "0",
+    totalPages: "0",
     currentPage: "1",
   };
   const [update, setUpdate] = useState(false);
-  const [editPostId, setEditPostId] = useState(false);
-  const [post, setPost] = useState(postInitial);
-  const [localPosts, setLocalPosts] = useState(postsInitial);
+  const [editPostId, setEditPostId] = useState(false as boolean | string);
+  const [post, setPost] = useState(postInitial as PostTS);
+  const [localPosts, setLocalPosts] = useState(postsInitial as PostsTS);
 
   const fetchMorePost = async () => {
     const page = parseInt(localPosts.currentPage);
@@ -41,7 +42,6 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
       );
       const postsData = res.data;
       const posts = res.data.posts;
-      // @ts-ignore
       setLocalPosts({ ...postsData, posts: [...localPosts.posts, ...posts] });
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
 
   const getUserPost = async () => {
     try {
-      const res: any = await axios.get(
+      const res: { data: PostsTS } = await axios.get(
         `${baseUrl}/post/user?page=1&limit=${postLimit}`
       );
       setLocalPosts(res.data);
@@ -67,7 +67,7 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
     const { _id, title, description, thumbnailUrl, category } =
       localPosts.posts.filter((item: any) => item._id === postId)[0];
     setPost({ title, description, thumbnailUrl, category });
-    setEditPostId(_id);
+    setEditPostId(_id as string);
   };
 
   const handleDelete = async (postId: string) => {
@@ -91,7 +91,6 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
     const tempPost = post;
     const categoryIndex = isCategoryPresent(newCategory);
     if (categoryIndex === -1) {
-      // @ts-ignore
       tempPost.category.push(newCategory);
     } else {
       tempPost.category.splice(categoryIndex, 1);
@@ -129,7 +128,7 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
           <div className="col-12">
             <h2 className="text-center mb-4">Manage your Post</h2>
           </div>
-          <div className="col-md-6 col-sm-12 mb-5">
+          <div className="col-md-8 col-sm-12 mb-5">
             <form onSubmit={handleFormSubmit}>
               <div className="form-group">
                 <label htmlFor="postTitle">Title</label>
@@ -216,12 +215,11 @@ const index = ({ categories }: { categories: CategoryTS[] }) => {
               </button>
             </form>
           </div>
-          <div className="col-md-6 col-sm-12 mb-5">
+          <div className="col-md-4 col-sm-12 mb-5">
             <h4>Your posts</h4>
             {localPosts && (
               <InfiniteScrollPosts
                 next={fetchMorePost}
-                // @ts-ignore
                 postData={localPosts}
                 className="col-12 mb-2"
                 onEdit={handleEdit}

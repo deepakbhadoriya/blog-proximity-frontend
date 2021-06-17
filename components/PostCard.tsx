@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import styled from "styled-components";
 
-import { PostTS } from "../utils/tsInterfaces";
+import { PostTS, UserTS } from "../utils/tsInterfaces";
 
 const AuthorInfo = dynamic(() => import("./AuthorInfo"));
 const CategoryTags = dynamic(() => import("./CategoryTags"));
@@ -39,8 +39,8 @@ const PostCard = ({
               test-data-py="blogPage"
               layout="responsive"
               objectFit="cover"
+              width="auto"
               height={200}
-              width={200}
             />
           </Link>
         </div>
@@ -57,7 +57,7 @@ const PostCard = ({
             >
               <h2>{title}</h2>
             </Link>
-            <AuthorInfo user={user} createdAt={createdAt} />
+            <AuthorInfo user={user as UserTS} createdAt={createdAt} />
           </div>
         </div>
         <div className="col-12 d-flex justify-content-end">
