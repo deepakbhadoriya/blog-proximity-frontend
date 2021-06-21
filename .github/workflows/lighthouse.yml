@@ -1,0 +1,30 @@
+# ./.github/workflows/lighthouse.yml
+name: LighthouseCI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: Install
+        run: npm ci && npm i -g @lhci/cli
+
+      - name: Build
+        with:
+          build: npm run build
+          start: npm start
+
+      - name: LighthouseCI
+        run: lhci autorun
