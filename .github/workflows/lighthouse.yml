@@ -19,13 +19,12 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: Install
-        run: npm ci && npm i -g @lhci/cli
-
       - name: Build
         run: |
           npm run build
           npm start
 
-      - name: LighthouseCI
-        run: lhci autorun
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.4.x
+          lhci autorun
