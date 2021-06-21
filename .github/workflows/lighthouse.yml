@@ -49,11 +49,10 @@ jobs:
 
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
-        run: |
-          npm install
-          npm run build
-          npm start
         with:
+          install: npm install
+          build: npm run build
+          start: npm start
           outputDirectory: /tmp/artifacts
           urls: "https://www.foo.software,https://www.foo.software/contact"
 
