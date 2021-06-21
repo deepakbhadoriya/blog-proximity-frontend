@@ -11,7 +11,8 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Setup node
         uses: actions/setup-node@v1
@@ -22,9 +23,9 @@ jobs:
         run: npm ci && npm i -g @lhci/cli
 
       - name: Build
-        with:
-          build: npm run build
-          start: npm start
+        run: |
+          npm run build
+          npm start
 
       - name: LighthouseCI
         run: lhci autorun
