@@ -1,8 +1,8 @@
 module.exports = {
   ci: {
     collect: {
-      url: ["https://blog-proximity-frontend.vercel.app/"],
-      // startServerCommand: "npm run start",
+      url: ["http://localhost:3000"],
+      startServerCommand: "npm run start",
       numberOfRuns: 1,
     },
     assert: {
