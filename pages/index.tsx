@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
+import Head from "../components/Head";
 import baseUrl from "../config/baseUrl";
 import { PostsTS } from "../utils/tsInterfaces";
 
@@ -33,14 +34,21 @@ const Home = ({ posts }: { posts: PostsTS }) => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12 d-flex justify-content-center">
-          <h1>Home Page</h1>
+    <>
+      <Head
+        title="Home page"
+        description="This is our landing page"
+        keywords="Blog, Next"
+      />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 d-flex justify-content-center">
+            <h1>Home Page</h1>
+          </div>
         </div>
+        <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
       </div>
-      <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
-    </div>
+    </>
   );
 };
 

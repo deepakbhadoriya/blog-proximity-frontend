@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
+import Head from "../../components/Head";
 import baseUrl from "../../config/baseUrl";
 import { PostsTS } from "../../utils/tsInterfaces";
 
@@ -38,14 +39,21 @@ const AuthorPosts = ({
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12 d-flex justify-content-center">
-          <h1>All posts by {authorName}</h1>
+    <>
+      <Head
+        title="Author page"
+        description="This is our Author page of blog"
+        keywords="blog, Author, posts"
+      />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 d-flex justify-content-center">
+            <h1>All posts by {authorName}</h1>
+          </div>
         </div>
+        <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
       </div>
-      <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
-    </div>
+    </>
   );
 };
 

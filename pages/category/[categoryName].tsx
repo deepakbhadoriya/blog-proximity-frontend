@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 
+import Head from "../../components/Head";
 import baseUrl from "../../config/baseUrl";
 import { PostsTS, CategoryTS } from "../../utils/tsInterfaces";
 
@@ -72,23 +73,30 @@ const CategoryPosts = ({
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12 d-flex justify-content-center">
-          <h1>All posts from {categoryName}</h1>
+    <>
+      <Head
+        title="Category page"
+        description="This is our category page of blog"
+        keywords="blog, category, posts"
+      />
+      <div className="container">
+        <div className="row">
+          <div className="col-12 d-flex justify-content-center">
+            <h1>All posts from {categoryName}</h1>
+          </div>
         </div>
+        {scrollType === "infiniteScroll" && (
+          <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
+        )}
+        {scrollType === "pagination" && (
+          <PaginationPosts
+            postData={localPosts}
+            handlePagination={handlePagination}
+          />
+        )}
+        {scrollType === "loading" && <h2>Loading</h2>}
       </div>
-      {scrollType === "infiniteScroll" && (
-        <InfiniteScrollPosts postData={localPosts} next={fetchMorePost} />
-      )}
-      {scrollType === "pagination" && (
-        <PaginationPosts
-          postData={localPosts}
-          handlePagination={handlePagination}
-        />
-      )}
-      {scrollType === "loading" && <h2>Loading</h2>}
-    </div>
+    </>
   );
 };
 
